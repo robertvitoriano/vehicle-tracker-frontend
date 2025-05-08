@@ -8,7 +8,7 @@ import { getVehicles, VehicleFilters } from "@/api/get-vehicles";
 
 export function Home() {
   useQuery({
-    queryKey: ["get-vehicles", { type: "tracked", page: 1 }],
+    queryKey: ["get-vehicles", { type: "tracked", page: 1, perPage:20 }],
     queryFn: ({ queryKey }) => {
       const [, filters] = queryKey;
       return getVehicles(filters as VehicleFilters);

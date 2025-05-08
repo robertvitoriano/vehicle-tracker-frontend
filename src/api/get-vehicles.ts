@@ -38,7 +38,7 @@ export type VehicleFilters = {
 }
 
 export async function getVehicles(params:VehicleFilters): Promise<VehiclesData> {
-  const response = await api.get<VehiclesData>("/vehicles/list-with-paginate",{
+  const response = await api.get<VehiclesData>("/recruitment",{
     params
   });
   console.log(response.data)
