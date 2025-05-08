@@ -3,8 +3,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {CarsMap} from "./CarsMap";
+import { useQuery } from "@tanstack/react-query";
+import { getVehicles, VehicleFilters } from "@/api/get-vehicles";
 
 export function Home() {
+  useQuery({
+    queryKey: ["get-vehicles", { type: "tracked", page: 1 }],
+    queryFn: ({ queryKey }) => {
+      const [, filters] = queryKey;
+      return getVehicles(filters as VehicleFilters);
+    },
+  });
   return (
     <div>
     <div className="flex items-center justify-between border-accent border-b-2">
@@ -29,7 +38,6 @@ export function Home() {
       </div>
     </div>
     <CarsMap/>
-
     </div>
   );
 }
