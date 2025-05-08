@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {CarsMap} from "./CarsMap";
 
 export function Home() {
   return (
+    <div>
     <div className="flex items-center justify-between border-accent border-b-2">
       <div className="flex  py-8 gap-32 items-center">
         <h2 className="text-white font-poppins">Lista</h2>
@@ -25,6 +27,9 @@ export function Home() {
         <Input className="border-muted h-10 w-[279px] font-poppins" placeholder="Buscar por placa ou frota"/>
         <Button title="Buscar" variant="default" className="px-16 font-poppins">Novo</Button>
       </div>
+    </div>
+    <CarsMap/>
+
     </div>
   );
 }
