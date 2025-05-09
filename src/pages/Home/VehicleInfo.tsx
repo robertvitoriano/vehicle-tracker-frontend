@@ -7,21 +7,26 @@ type Props = {
 };
 export const VehicleInfo = ({ vehicle, onClose }: Props) => {
   const { createdAt, plate, fleet, lat, lng } = vehicle;
+
   return (
-    <div className="bg-background text-white font-poppins flex flex-col w-[166px] relative ">
-      <div className="w-full flex  justify-end px-2 py-2 absolute">
-        <X onClick={onClose} className="w-fit text-white " size={12}/>
-      </div>
-      <div className="bg-background text-white font-poppins flex flex-col py-4 items-center ">
-        <span>Placa {plate}</span>
-        <span>Frota {fleet}</span>
-        <span>{createdAt}</span>
-        <div className="border-b-2 border-white">
-          <span>
-            {lat},{lng}
-          </span>
+    <div className="relative flex flex-col items-center">
+      <div className="bg-background text-white font-poppins w-[166px] rounded-md shadow-lg relative z-10">
+        <div className="flex justify-end px-2 py-2 absolute top-0 right-0">
+          <X onClick={onClose} className="text-white cursor-pointer" size={12} />
+        </div>
+        <div className="flex flex-col py-6 items-center px-2 pt-8">
+          <span>Placa {plate}</span>
+          <span>Frota {fleet}</span>
+          <span>{createdAt}</span>
+          <div className="border-b-2 border-white mt-1">
+            <span>
+              {lat}, {lng}
+            </span>
+          </div>
         </div>
       </div>
+
+      <div className="w-0 h-0 border-l-8 border-r-8 border-t-[10px] border-l-transparent border-r-transparent border-t-background z-0" />
     </div>
   );
 };
