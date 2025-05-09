@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import { env } from './../../../env';
 import { LocationVehicle } from "@/api/get-vehicles";
+import greenVehicleMarkerIcon from './../../assets/green-vehicle-marker-icon.svg'
+import redVehicleMarkerIcon from './../../assets/red-vehicle-marker-icon.svg'
 
 const containerStyle = {
   width: '100%',
@@ -25,21 +27,28 @@ export const CarsMap = ({trackedVehicles}:Props) => {
       setCenter({lat, lng})
     }
   },[trackedVehicles])
-
+  function getMarkerBasedOnVehicleStatus(status:string){
+    const ignitionStatuses = {
+      "Ligado": greenVehicleMarkerIcon,
+      "Desligado": redVehicleMarkerIcon
+    }
+    return ignitionStatuses[status]
+    
+  }
   return (
     <LoadScript googleMapsApiKey={env.VITE_GOOGLE_API_URL}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={4}
+        zoom={5}
         options={{ styles: customMapStyle }}
       >
-        {trackedVehicles.map(({lat,lng}, index) => (
+        {trackedVehicles.map(({lat,lng, ignition}, index) => (
           <Marker
             key={index}
             position={{lat, lng}}
             icon={{
-              url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+              url: getMarkerBasedOnVehicleStatus(ignition) ,
             }}
             onClick={() => setSelected({lat, lng})}
           />
