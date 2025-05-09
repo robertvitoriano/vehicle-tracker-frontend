@@ -4,10 +4,12 @@ import { env } from './../../../env';
 import { LocationVehicle } from "@/api/get-vehicles";
 import greenVehicleMarkerIcon from './../../assets/green-vehicle-marker-icon.svg'
 import redVehicleMarkerIcon from './../../assets/red-vehicle-marker-icon.svg'
+import { VehicleInfo } from "./VehicleInfo";
 
 const containerStyle = {
   width: '100%',
   height: '300px',
+  borderRadius:"10px"
 };
 
 const customMapStyle = [];
@@ -18,7 +20,7 @@ type Props = {
 }
 export const CarsMap = ({trackedVehicles}:Props) => {
   
-  const [selected, setSelected] = useState<{ lat: number; lng: number } | null>(null);
+  const [selectedVehicle, setSelectedVehicle] = useState<LocationVehicle | null>(null);
   const [center, setCenter] = useState<{ lat: number; lng: number }>({lat:0, lng:0})
   
   useEffect(()=>{
@@ -36,6 +38,8 @@ export const CarsMap = ({trackedVehicles}:Props) => {
     
   }
   return (
+    <div className="flex flex-col p-4 bg-accent rounded-lg gap-2">
+    <h1 className="font-poppins text-white font-semibold">Mapa rastreador</h1>
     <LoadScript googleMapsApiKey={env.VITE_GOOGLE_API_URL}>
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -43,26 +47,31 @@ export const CarsMap = ({trackedVehicles}:Props) => {
         zoom={5}
         options={{ styles: customMapStyle }}
       >
-        {trackedVehicles.map(({lat,lng, ignition}, index) => (
+        {trackedVehicles.map((vehicle, index) => {
+          const {lat,lng, ignition} = vehicle
+          return(
           <Marker
             key={index}
             position={{lat, lng}}
             icon={{
               url: getMarkerBasedOnVehicleStatus(ignition) ,
             }}
-            onClick={() => setSelected({lat, lng})}
+            onClick={() => setSelectedVehicle(vehicle)}
           />
-        ))}
+        )})}
 
-        {selected && (
+        {selectedVehicle && (
           <InfoWindow
-            position={selected}
-            onCloseClick={() => setSelected(null)}
+            position={selectedVehicle}
+            onCloseClick={() => setSelectedVehicle(null)}
+            
           >
-            <div>INFO</div>
+            <VehicleInfo vehicle={selectedVehicle}/>
           </InfoWindow>
         )}
       </GoogleMap>
     </LoadScript>
+    </div>
   );
 };
+
