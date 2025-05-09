@@ -13,9 +13,8 @@ type Props = {
 };
 export const VehicleTable = ({ vehicles }: Props) => {
   return (
-    <div className="bg-primary border border-accent rounded-lg p-4">
+    <div className="bg-primary border border-accent rounded-lg">
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Placa</TableHead>
