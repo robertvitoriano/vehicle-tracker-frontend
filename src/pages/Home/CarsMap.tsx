@@ -64,9 +64,9 @@ export const CarsMap = ({trackedVehicles}:Props) => {
           <InfoWindow
             position={selectedVehicle}
             onCloseClick={() => setSelectedVehicle(null)}
+            children={<VehicleInfo vehicle={selectedVehicle} />}
             
           >
-            <VehicleInfo vehicle={selectedVehicle}/>
           </InfoWindow>
         )}
       </GoogleMap>
