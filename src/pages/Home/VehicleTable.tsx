@@ -2,7 +2,6 @@ import { Vehicle } from "@/api/get-vehicles";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -28,7 +27,7 @@ export const VehicleTable = ({ vehicles }: Props) => {
           {vehicles.map(({ plate, fleet, type, model, status }) => (
             <TableRow>
               <TableCell>{plate}</TableCell>
-              <TableCell>{fleet}</TableCell>
+              <TableCell>{fleet || "Não informada"}</TableCell>
               <TableCell>{type}</TableCell>
               <TableCell>{model}</TableCell>
               <TableCell>{status}</TableCell>
