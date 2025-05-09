@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker, InfoWindow, OverlayView } from "@react-google-maps/api";
 import { env } from './../../../env';
 import { LocationVehicle } from "@/api/get-vehicles";
 import greenVehicleMarkerIcon from './../../assets/green-vehicle-marker-icon.svg'
@@ -61,13 +61,12 @@ export const CarsMap = ({trackedVehicles}:Props) => {
         )})}
 
         {selectedVehicle && (
-          <InfoWindow
-            position={selectedVehicle}
-            onCloseClick={() => setSelectedVehicle(null)}
-            children={<VehicleInfo vehicle={selectedVehicle} />}
-            
+          <OverlayView
+            position={{lat:selectedVehicle.lat +7, lng:selectedVehicle.lng - 3}}
+            children={<VehicleInfo vehicle={selectedVehicle} onClose={()=>setSelectedVehicle(null)} />}
+            mapPaneName="floatPane" 
           >
-          </InfoWindow>
+          </OverlayView>
         )}
       </GoogleMap>
     </LoadScript>
