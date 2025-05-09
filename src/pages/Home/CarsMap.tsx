@@ -59,7 +59,10 @@ export const CarsMap = ({ trackedVehicles }: Props) => {
           center={center}
           zoom={zoom}
           options={{ styles: customMapStyle }}
-          onLoad={(map) => (mapRef.current = map)} 
+          onLoad={(map) => {
+            mapRef.current = map;
+            return;
+          }}          
           onZoomChanged={handleZoomChanged} 
         >
           {trackedVehicles.map((vehicle, index) => {
