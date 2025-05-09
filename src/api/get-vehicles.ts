@@ -3,7 +3,7 @@ import { api } from "@/lib/axios";
 type VehicleType = 'vehicle' | 'implement';
 type VehicleStatus = 'active';
 
-interface Vehicle {
+export interface Vehicle {
   id: string;
   plate: string;
   fleet: string | null;
@@ -14,7 +14,7 @@ interface Vehicle {
   createdAt: string;
 }
 
-interface LocationVehicle {
+export interface LocationVehicle {
   id: string;
   fleet: string;
   equipmentId: string;
@@ -26,21 +26,28 @@ interface LocationVehicle {
   createdAt: string; 
 }
 
-interface VehiclesData {
-  vehicles: Vehicle[];
-  locationVehicles: LocationVehicle[];
-}
 
 export type VehicleFilters = {
   type: "tracked" | "others",
   page: number
   perPage?: number
 }
+type VehiclesFetchResponse = {
+  content:{
+    vehicles: Vehicle[];
+    locationVehicles: LocationVehicle[];
+    page: number
+    perPage: string
+    totalPages:number
+  }
+  message:string,
+  statusCode:string
+}
 
-export async function getVehicles(params:VehicleFilters): Promise<VehiclesData> {
-  const response = await api.get<VehiclesData>("/recruitment",{
+export async function getVehicles(params:VehicleFilters): Promise<VehiclesFetchResponse> {
+  const response = await api.get<VehiclesFetchResponse>("recruitment/vehicles/list-with-paginate",{
     params
   });
-  console.log(response.data)
+  
   return response.data;
 }

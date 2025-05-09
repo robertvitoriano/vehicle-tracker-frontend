@@ -4,16 +4,27 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {CarsMap} from "./CarsMap";
 import { useQuery } from "@tanstack/react-query";
-import { getVehicles, VehicleFilters } from "@/api/get-vehicles";
+import { getVehicles, LocationVehicle, VehicleFilters } from "@/api/get-vehicles";
+import { useEffect, useState } from "react";
 
 export function Home() {
-  useQuery({
+  const {data:vehiclesResponse} = useQuery({
     queryKey: ["get-vehicles", { type: "tracked", page: 1, perPage:20 }],
     queryFn: ({ queryKey }) => {
       const [, filters] = queryKey;
       return getVehicles(filters as VehicleFilters);
     },
   });
+  const [trackedVehicles, setTrackedVehicles] = useState<LocationVehicle[]>([])
+  
+  useEffect(()=>{
+    if(vehiclesResponse){
+      
+      setTrackedVehicles(vehiclesResponse.content.locationVehicles)
+    }
+  },[vehiclesResponse])
+  
+  
   return (
     <div>
     <div className="flex items-center justify-between border-accent border-b-2">
@@ -37,7 +48,7 @@ export function Home() {
         <Button title="Buscar" variant="default" className="px-16 font-poppins">Novo</Button>
       </div>
     </div>
-    <CarsMap/>
+    <CarsMap trackedVehicles={trackedVehicles}/>
     </div>
   );
 }
