@@ -8,20 +8,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
 type Props = {
   vehicles: Vehicle[];
 };
+
+const columns = ["Placa", "Frota", "Tipo", "Modelo", "Status"];
+
 export const VehicleTable = ({ vehicles }: Props) => {
   return (
     <div className="bg-primary border border-accent rounded-lg">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Placa</TableHead>
-            <TableHead>Frota</TableHead>
-            <TableHead>Tipo</TableHead>
-            <TableHead>Modelo</TableHead>
-            <TableHead>Status</TableHead>
+            {columns.map((column)=><TableHead>{column}</TableHead>)}
           </TableRow>
         </TableHeader>
         <TableBody>

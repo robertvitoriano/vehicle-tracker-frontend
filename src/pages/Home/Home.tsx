@@ -33,13 +33,13 @@ export function Home() {
         <div className="flex  py-8 gap-32 items-center">
           <h2 className="text-white font-poppins">Lista</h2>
           <div>
-            <RadioGroup defaultValue="comfortable" className="flex text-white">
+            <RadioGroup defaultValue="vehicles" className="flex text-white">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="default" id="r1" />
                 <Label htmlFor="tracked font-poppins">Rastreados</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="comfortable" id="r2" />
+                <RadioGroupItem value="vehicles" id="r2" />
                 <Label htmlFor="others font-poppins">Outros</Label>
               </div>
             </RadioGroup>
