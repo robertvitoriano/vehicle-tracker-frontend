@@ -4,8 +4,9 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { VehiclesMap } from "./VehiclesMap";
 import { useQuery } from "@tanstack/react-query";
-import { getVehicles, LocationVehicle, VehicleFilters } from "@/api/get-vehicles";
+import { getVehicles, LocationVehicle, Vehicle, VehicleFilters } from "@/api/get-vehicles";
 import { useEffect, useState } from "react";
+import { VehicleTable } from "./VehicleTable";
 
 export function Home() {
   const { data: vehiclesResponse } = useQuery({
@@ -16,10 +17,13 @@ export function Home() {
     },
   });
   const [trackedVehicles, setTrackedVehicles] = useState<LocationVehicle[]>([]);
+  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+
 
   useEffect(() => {
     if (vehiclesResponse) {
       setTrackedVehicles(vehiclesResponse.content.locationVehicles);
+      setVehicles(vehiclesResponse.content.vehicles)
     }
   }, [vehiclesResponse]);
 
@@ -52,6 +56,7 @@ export function Home() {
         </div>
       </div>
       <VehiclesMap trackedVehicles={trackedVehicles} />
+      <VehicleTable vehicles={vehicles}/>
     </div>
   );
 }

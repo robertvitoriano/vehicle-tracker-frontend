@@ -8,7 +8,7 @@ import { VehicleInfo } from "./VehicleInfo";
 
 const containerStyle = {
   width: '100%',
-  height: '300px',
+  height: '60vh',
   borderRadius:"10px"
 };
 
@@ -51,7 +51,7 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
   console.log({ zoom });
   const latitudeOffset = zoom <= 5 ? 8 : 2
   return (
-    <div className="flex flex-col p-4 bg-accent rounded-lg gap-2">
+    <div className="flex flex-col p-4 bg-primary border border-accent rounded-lg gap-2">
       <h1 className="font-poppins text-white font-semibold">Mapa rastreador</h1>
       <LoadScript googleMapsApiKey={env.VITE_GOOGLE_API_URL}>
         <GoogleMap
@@ -63,6 +63,7 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
             mapRef.current = map;
             return;
           }}          
+          mapTypeId={env.VITE_MAP_ID}
           onZoomChanged={handleZoomChanged} 
         >
           {trackedVehicles.map((vehicle, index) => {
