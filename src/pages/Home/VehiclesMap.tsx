@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GoogleMap, LoadScript, Marker, OverlayView } from "@react-google-maps/api";
-import { env } from './../../../env';
+import { env } from '../../../env';
 import { LocationVehicle } from "@/api/get-vehicles";
 import greenVehicleMarkerIcon from './../../assets/green-vehicle-marker-icon.svg'
 import redVehicleMarkerIcon from './../../assets/red-vehicle-marker-icon.svg'
@@ -18,7 +18,7 @@ type Props = {
   trackedVehicles: LocationVehicle[]
 };
 
-export const CarsMap = ({ trackedVehicles }: Props) => {
+export const VehiclesMap = ({ trackedVehicles }: Props) => {
   const [selectedVehicle, setSelectedVehicle] = useState<LocationVehicle | null>(null);
   const [center, setCenter] = useState<{ lat: number; lng: number }>({ lat: 0, lng: 0 });
   const [zoom, setZoom] = useState<number>(5);

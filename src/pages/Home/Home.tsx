@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { CarsMap } from "./CarsMap";
+import { VehiclesMap } from "./VehiclesMap";
 import { useQuery } from "@tanstack/react-query";
 import { getVehicles, LocationVehicle, VehicleFilters } from "@/api/get-vehicles";
 import { useEffect, useState } from "react";
@@ -43,7 +43,7 @@ export function Home() {
         </div>
         <div className="flex gap-4">
           <Input
-            className="border-muted h-10 w-[279px] font-poppins"
+            className="border-muted h-10 w-[279px] font-poppins text-white"
             placeholder="Buscar por placa ou frota"
           />
           <Button title="Buscar" variant="default" className="px-16 font-poppins">
@@ -51,7 +51,7 @@ export function Home() {
           </Button>
         </div>
       </div>
-      <CarsMap trackedVehicles={trackedVehicles} />
+      <VehiclesMap trackedVehicles={trackedVehicles} />
     </div>
   );
 }
