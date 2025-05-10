@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getVehicles, getVehiclesQueryKey, LocationVehicle, Vehicle } from "@/api/get-vehicles";
+import { useEffect } from "react";
 
 export function useTrackedVehicles() {
   const getNextPage = (lastPage: any) => {
@@ -17,7 +18,23 @@ export function useTrackedVehicles() {
     initialPageParam: 1,
     getNextPageParam: getNextPage,
   });
+  
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      await query.refetch(); 
 
+      let hasNextPage = query.hasNextPage;
+      
+      while (hasNextPage) {
+        const result = await query.fetchNextPage();
+        hasNextPage = result.hasNextPage ?? false;
+      }
+    }, 120_000);
+
+    return () => clearInterval(interval);
+    
+  }, [query]);
+  
   const trackedVehicles: LocationVehicle[] = query.data
     ? query.data.pages.flatMap((p) => p.content.locationVehicles)
     : [];

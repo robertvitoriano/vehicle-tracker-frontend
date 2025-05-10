@@ -1,4 +1,3 @@
-// hooks/useInfiniteScroll.ts
 import { useEffect } from "react";
 
 export function useInfiniteScroll({
