@@ -49,6 +49,10 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
   };
   function calculateLatitudeOffset(newZoom: number) {
     const zoomToKMap: { [key: number]: number } = {
+      1:95,
+      2:120,
+      3:90,
+      4:60,
       5: 40,
       6: 22,
       7: 13,
