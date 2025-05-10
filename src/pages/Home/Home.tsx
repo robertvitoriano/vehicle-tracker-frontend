@@ -5,8 +5,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { VehiclesMap } from "./VehiclesMap";
 
 import { VehicleTable } from "./VehicleTable";
-import { useTrackedVehicles } from "@/hooks/useTrackedVehicles";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { useTrackedVehicles } from "@/lib/hooks/useTrackedVehicles";
+import { useInfiniteScroll } from "@/lib/hooks/useInfiniteScroll";
 
 export function Home() {
   const { trackedVehicles, vehicles, fetchNextPage, hasNextPage, isFetchingNextPage } =
