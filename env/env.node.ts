@@ -1,0 +1,8 @@
+import { envSchema } from "./env-schema";
+
+export const env = envSchema.parse({
+  VITE_API_URL: process.env.VITE_API_URL || "http://localhost:3000",
+  VITE_GOOGLE_API_URL: process.env.VITE_GOOGLE_API_URL || "http://maps.googleapis.com",
+  VITE_API_TOKEN: process.env.VITE_API_TOKEN || "mock-api-token",
+  VITE_MAP_ID: process.env.VITE_MAP_ID || "mock-map-id",
+});
