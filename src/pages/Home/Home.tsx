@@ -9,34 +9,29 @@ import { useTrackedVehicles } from "@/hooks/useTrackedVehicles";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
 export function Home() {
-  const {
-    trackedVehicles,
-    vehicles,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useTrackedVehicles();
+  const { trackedVehicles, vehicles, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useTrackedVehicles();
 
   useInfiniteScroll({
     fetchNextPage,
     hasNextPage: !!hasNextPage,
     isFetchingNextPage,
   });
-  
+
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-col items-center justify-between border-accent border-b-2 md:p-b-8 md:flex-row ">
+      <div className="flex flex-col items-center justify-between border-accent border-b-2 pb-8 md:pb-0 md:flex-row ">
         <div className="flex  py-8 gap-8 md:flex-1 md:justify-between items-center">
           <h2 className="text-white font-poppins">Lista</h2>
           <div>
-            <RadioGroup defaultValue="vehicles" className="flex text-white">
+            <RadioGroup defaultValue="tracked" className="flex text-white">
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="default" id="r1" />
-                <Label htmlFor="tracked font-poppins">Rastreados</Label>
+                <RadioGroupItem value="tracked" id="tracked" />
+                <Label htmlFor="tracked">Rastreados</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="vehicles" id="r2" />
-                <Label htmlFor="others font-poppins">Outros</Label>
+                <RadioGroupItem value="others" id="others" />
+                <Label htmlFor="others">Outros</Label>
               </div>
             </RadioGroup>
           </div>
