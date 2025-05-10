@@ -73,7 +73,7 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
     
     setLatitudeOffset(k / newZoom);
   }
-  console.log({ zoom });
+  
   return (
     <div className="flex flex-col h-[40vh] p-4 bg-primary border border-accent rounded-lg gap-2 md:h-[70vh]">
       <h1 className="font-poppins text-white font-semibold">
