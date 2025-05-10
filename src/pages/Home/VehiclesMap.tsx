@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GoogleMap, LoadScript, Marker, OverlayView } from "@react-google-maps/api";
-import { env } from '../../../env';
+import { env } from '../../env';
 import { LocationVehicle } from "@/api/get-vehicles";
 import greenVehicleMarkerIcon from './../../assets/green-vehicle-marker-icon.svg'
 import redVehicleMarkerIcon from './../../assets/red-vehicle-marker-icon.svg'
@@ -48,8 +48,8 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
     }
   };
 
-  console.log({ zoom });
   const latitudeOffset = zoom <= 5 ? 8 : 2
+  
   return (
     <div className="flex flex-col p-4 bg-primary border border-accent rounded-lg gap-2">
       <h1 className="font-poppins text-white font-semibold">Mapa rastreador</h1>

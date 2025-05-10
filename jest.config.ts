@@ -6,6 +6,8 @@ const config: Config = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"], 
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1", 
+    "\\.(svg|png|jpg|jpeg|gif)$": "<rootDir>/src/mocks/staticFileMock.ts"
+
   },
   globals: {
     "ts-jest": {

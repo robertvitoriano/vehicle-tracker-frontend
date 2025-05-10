@@ -25,12 +25,12 @@ export const VehicleTable = ({ vehicles }: Props) => {
       <Table>
         <TableHeader>
           <TableRow>
-            {columns.map((column)=><TableHead>{column}</TableHead>)}
+            {columns.map((column,index)=><TableHead key={index}>{column}</TableHead>)}
           </TableRow>
         </TableHeader>
         <TableBody>
-          {vehicles.map(({ plate, fleet, type, model, status }) => (
-            <TableRow>
+          {vehicles.map(({ plate, fleet, type, model, status,id }) => (
+            <TableRow key={id}>
               <TableCell>{plate}</TableCell>
               <TableCell>{fleet || "Não informada"}</TableCell>
               <TableCell>{typesMap[type]}</TableCell>
