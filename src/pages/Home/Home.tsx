@@ -25,8 +25,8 @@ export function Home() {
   
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-center justify-between border-accent border-b-2">
-        <div className="flex  py-8 gap-32 items-center">
+      <div className="flex flex-col items-center justify-between border-accent border-b-2 md:p-b-8 md:flex-row ">
+        <div className="flex  py-8 gap-8 md:flex-1 md:justify-between items-center">
           <h2 className="text-white font-poppins">Lista</h2>
           <div>
             <RadioGroup defaultValue="vehicles" className="flex text-white">
@@ -41,7 +41,7 @@ export function Home() {
             </RadioGroup>
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-col md:flex-row md:ml-8">
           <Input
             className="border-muted h-10 w-[279px] font-poppins text-white"
             placeholder="Buscar por placa ou frota"

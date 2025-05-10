@@ -21,7 +21,7 @@ const columns = ["Placa", "Frota", "Tipo", "Modelo", "Status"];
 
 export const VehicleTable = ({ vehicles }: Props) => {
   return (
-    <div className="bg-primary border border-accent rounded-lg">
+    <div className="bg-primary border border-accent rounded-lg pb-4">
       <Table>
         <TableHeader>
           <TableRow>
