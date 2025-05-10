@@ -3,60 +3,25 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { VehiclesMap } from "./VehiclesMap";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import {
-  getVehicles,
-  getVehiclesQueryKey,
-  LocationVehicle,
-  Vehicle,
-} from "@/api/get-vehicles";
-import { useEffect, useState } from "react";
+
 import { VehicleTable } from "./VehicleTable";
+import { useTrackedVehicles } from "@/hooks/useTrackedVehicles";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
 export function Home() {
-  const getNextPage  = (lastPage) => {
-    const currentPage = lastPage.content.page;
-    const totalPages = lastPage.content.totalPages;
-    return currentPage < totalPages ? currentPage + 1 : undefined;
-  }
-  
-  const queryFunction = ({ pageParam = 1 }) => getVehicles({ type: "tracked", page: pageParam, perPage: 20 })
-  
-  const { data:vehiclesResponse, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: [getVehiclesQueryKey, { type: "tracked", perPage: 20 }],
-    queryFn:queryFunction ,
-    initialPageParam: 1,
-    getNextPageParam: getNextPage,
-    
+  const {
+    trackedVehicles,
+    vehicles,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useTrackedVehicles();
+
+  useInfiniteScroll({
+    fetchNextPage,
+    hasNextPage: !!hasNextPage,
+    isFetchingNextPage,
   });
-
-  const [trackedVehicles, setTrackedVehicles] = useState<LocationVehicle[]>([]);
-  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
-
-  useEffect(() => {
-    if (vehiclesResponse) {
-      const allTracked = vehiclesResponse.pages.flatMap((p) => p.content.locationVehicles);
-      const allVehicles = vehiclesResponse.pages.flatMap((p) => p.content.vehicles);
-      setTrackedVehicles(allTracked);
-      setVehicles(allVehicles);
-    }
-  }, [vehiclesResponse]);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
-        hasNextPage &&
-        !isFetchingNextPage
-      ) {
-        fetchNextPage();
-      }
-    };
-    const pageContainer = document.querySelector('.page-container')
-    pageContainer.addEventListener("scroll", handleScroll);
-    return () => pageContainer.removeEventListener("scroll", handleScroll);
-    
-  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
   
   return (
     <div className="flex flex-col gap-8">
