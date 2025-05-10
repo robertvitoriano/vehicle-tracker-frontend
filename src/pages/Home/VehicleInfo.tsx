@@ -19,9 +19,14 @@ export const VehicleInfo = ({ vehicle, onClose }: Props) => {
           <span>Frota {fleet}</span>
           <span>{createdAt}</span>
           <div className="border-b-2 border-white mt-1">
-            <span>
+            <a
+              href={`https://www.google.com/maps?q=${lat},${lng}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-active underline"
+            >
               {lat}, {lng}
-            </span>
+            </a>
           </div>
         </div>
       </div>
