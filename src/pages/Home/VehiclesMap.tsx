@@ -8,7 +8,7 @@ import { VehicleInfo } from "./VehicleInfo";
 
 const containerStyle = {
   width: '100%',
-  height: '60vh',
+  height: '70vh',
   borderRadius:"10px"
 };
 
@@ -22,7 +22,7 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
   const [selectedVehicle, setSelectedVehicle] = useState<LocationVehicle | null>(null);
   const [center, setCenter] = useState<{ lat: number; lng: number }>({ lat: 0, lng: 0 });
   const [zoom, setZoom] = useState<number>(5);
-  const mapRef = useRef<google.maps.Map | null>(null); // ✅ map ref
+  const mapRef = useRef<google.maps.Map | null>(null);
 
   useEffect(() => {
     if (trackedVehicles.length > 0) {
