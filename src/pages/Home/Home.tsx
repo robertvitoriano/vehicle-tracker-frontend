@@ -21,7 +21,7 @@ export function Home() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col items-center justify-between border-accent border-b-2 pb-8 md:pb-0 md:flex-row ">
-        <div className="flex  py-8 gap-8 md:flex-1 md:justify-between items-center">
+        <div className="flex  py-8 gap-8 md:flex-1 md:gap-32  items-center">
           <h2 className="text-white font-poppins">Lista</h2>
           <div>
             <RadioGroup defaultValue="tracked" className="flex text-white">

@@ -60,7 +60,6 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
             mapRef.current = map;
             return;
           }}          
-          mapTypeId={env.VITE_MAP_ID}
           onZoomChanged={handleZoomChanged} 
         >
           {trackedVehicles.map((vehicle, index) => {
