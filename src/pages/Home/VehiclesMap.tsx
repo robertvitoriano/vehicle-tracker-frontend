@@ -88,10 +88,6 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
     } else if (newZoom == 22 ) {
       k = 0.0012;
     }
-    
-    
-    
-    
     setLatitudeOffset(k / newZoom);
   }
   console.log({ zoom });
