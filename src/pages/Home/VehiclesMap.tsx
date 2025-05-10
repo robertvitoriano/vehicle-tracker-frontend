@@ -81,7 +81,7 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
   return (
     <div className="flex flex-col h-[40vh] p-4 bg-primary border border-accent rounded-lg gap-2 md:h-[70vh]">
       <h1 className="font-poppins text-white font-semibold">
-        Mapa rastreador {zoom} latitude Offset:{latitudeOffset}
+        Mapa rastreador
       </h1>
       <LoadScript googleMapsApiKey={env.VITE_GOOGLE_API_URL}>
         <GoogleMap
