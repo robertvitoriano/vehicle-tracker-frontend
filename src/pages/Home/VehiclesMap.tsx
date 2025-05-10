@@ -48,46 +48,29 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
     }
   };
   function calculateLatitudeOffset(newZoom: number) {
-    let k = 5;
-    if (newZoom <= 5) {
-      k = 40;
-    } else if (newZoom >= 5 && newZoom < 7) {
-      k = 25;
-    } else if (newZoom == 7) {
-      k = 15;
-    } else if (newZoom == 8) {
-      k = newZoom;
-    } else if (newZoom > 8 && newZoom < 10) {
-      k = 5;
-    } else if (newZoom == 10) {
-      k = 2.2;
-    } else if (newZoom == 11) {
-      k = 1.4;
-    } else if (newZoom == 12 ) {
-      k = 0.7;
-    }else if (newZoom == 13 ) {
-      k = 0.4;
-    } else if (newZoom == 14 ) {
-      k = 0.2;
-    } else if (newZoom == 14 ) {
-      k = 0.2;
-    } else if (newZoom == 15 ) {
-      k = 0.11;
-    } else if (newZoom == 16 ) {
-      k = 0.06;
-    } else if (newZoom == 17 ) {
-      k = 0.03;
-    } else if (newZoom == 18 ) {
-      k = 0.018;
-    } else if (newZoom == 19 ) {
-      k = 0.009;
-    } else if (newZoom == 20 ) {
-      k = 0.0045;
-    } else if (newZoom == 21 ) {
-      k = 0.0025;
-    } else if (newZoom == 22 ) {
-      k = 0.0012;
-    }
+    const zoomToKMap: { [key: number]: number } = {
+      5: 40,
+      6: 22,
+      7: 13,
+      8: 8,
+      9: 4,
+      10: 2.2,
+      11: 1.4,
+      12: 0.7,
+      13: 0.4,
+      14: 0.2,
+      15: 0.11,
+      16: 0.06,
+      17: 0.03,
+      18: 0.018,
+      19: 0.009,
+      20: 0.0045,
+      21: 0.0025,
+      22: 0.0012,
+    };
+  
+    const k = zoomToKMap[newZoom] ?? 0;
+    
     setLatitudeOffset(k / newZoom);
   }
   console.log({ zoom });
