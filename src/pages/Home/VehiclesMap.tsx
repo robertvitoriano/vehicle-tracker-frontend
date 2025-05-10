@@ -12,8 +12,6 @@ const containerStyle = {
   borderRadius:"10px"
 };
 
-const customMapStyle = [];
-
 type Props = {
   trackedVehicles: LocationVehicle[]
 };
@@ -58,7 +56,6 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
           mapContainerStyle={containerStyle}
           center={center}
           zoom={zoom}
-          options={{ styles: customMapStyle }}
           onLoad={(map) => {
             mapRef.current = map;
             return;
