@@ -17,9 +17,8 @@ const mockVehicle:LocationVehicle = {
 
 describe("VehicleInfo Component", () => {
   it("should render vehicle information", () => {
-    const mockOnClose = jest.fn();
 
-    render(<VehicleInfo vehicle={mockVehicle} onClose={mockOnClose} />);
+    render(<VehicleInfo vehicle={mockVehicle} />);
 
     expect(screen.getByText("Placa ABC1234")).toBeInTheDocument();
     expect(screen.getByText("Frota Fleet A")).toBeInTheDocument();

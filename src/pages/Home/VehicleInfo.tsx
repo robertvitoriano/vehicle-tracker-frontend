@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 
 type Props = {
   vehicle: LocationVehicle;
-  onClose: () => void;
+  onClose?: () => void;
 };
 export const VehicleInfo = ({ vehicle, onClose }: Props) => {
   const { createdAt, plate, fleet, lat, lng } = vehicle;
