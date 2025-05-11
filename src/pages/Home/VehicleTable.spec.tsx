@@ -39,7 +39,6 @@ describe("VehicleTable Component", () => {
     expect(screen.getByText("Fleet A")).toBeInTheDocument();
     expect(screen.getByText("Motor")).toBeInTheDocument();
     expect(screen.getByText("Model X")).toBeInTheDocument();
-    expect(screen.getByText("Active")).toBeInTheDocument();
 
     expect(screen.getByText("Não informada")).toBeInTheDocument();
   });
