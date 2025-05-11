@@ -24,9 +24,9 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
   const mapRef = useRef<google.maps.Map | null>(null);
 
   useEffect(() => {
-    if (trackedVehicles.length > 0) {
-      const { lat, lng } = trackedVehicles[0];
-      setCenter({ lat, lng });
+    if (trackedVehicles[0]) {
+        const { lat, lng } = trackedVehicles[0];
+        setCenter({ lat, lng });
     }
   }, [trackedVehicles]);
 
@@ -95,15 +95,17 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
           onZoomChanged={handleZoomChanged}
         >
           {trackedVehicles.map((vehicle, index) => {
-            const { lat, lng, ignition } = vehicle;
-            return (
-              <Marker
-                key={index}
-                position={{ lat, lng }}
-                icon={{ url: getMarkerBasedOnVehicleStatus(ignition) }}
-                onClick={() => setSelectedVehicle(vehicle)}
-              />
-            );
+            if(vehicle){
+              const { lat, lng, ignition } = vehicle;
+              return (
+                <Marker
+                  key={index}
+                  position={{ lat, lng }}
+                  icon={{ url: getMarkerBasedOnVehicleStatus(ignition) }}
+                  onClick={() => setSelectedVehicle(vehicle)}
+                />
+              );
+            }
           })}
 
           {selectedVehicle && (
