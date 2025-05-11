@@ -7,7 +7,9 @@ import { VehiclesMap } from "../../components/VehiclesMap/VehiclesMap";
 import { VehicleTable } from "../../components/VehiclesTable/VehicleTable";
 import { useVehicleData } from "@/lib/hooks/useVehicleData";
 import { useInfiniteScroll } from "@/lib/hooks/useInfiniteScroll";
+
 type VehicleType = "tracked" | "others"
+
 export function Home() {
   const [vehicleType, setVehicleType] = useState<VehicleType>("tracked");
 
