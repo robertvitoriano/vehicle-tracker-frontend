@@ -4,7 +4,7 @@ import { env } from "../../env";
 import { LocationVehicle } from "@/api/get-vehicles";
 import greenVehicleMarkerIcon from "./../../assets/green-vehicle-marker-icon.svg";
 import redVehicleMarkerIcon from "./../../assets/red-vehicle-marker-icon.svg";
-import { VehicleInfo } from "./VehicleInfo";
+import { VehicleInfo } from "../VehiclesInfo/VehicleInfo";
 
 const containerStyle = {
   width: "100%",

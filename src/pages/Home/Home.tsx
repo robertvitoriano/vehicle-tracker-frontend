@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { VehiclesMap } from "./VehiclesMap";
+import { VehiclesMap } from "../../components/VehiclesMap/VehiclesMap";
 
-import { VehicleTable } from "./VehicleTable";
+import { VehicleTable } from "../../components/VehiclesTable/VehicleTable";
 import { useTrackedVehicles } from "@/lib/hooks/useTrackedVehicles";
 import { useInfiniteScroll } from "@/lib/hooks/useInfiniteScroll";
 

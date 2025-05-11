@@ -1,7 +1,7 @@
 import { api } from "@/lib/axios";
 
 type VehicleType = 'vehicle' | 'implement';
-type VehicleStatus = 'active';
+type VehicleStatus = 'active' | 'inactive';
 
 export interface Vehicle {
   id: string;

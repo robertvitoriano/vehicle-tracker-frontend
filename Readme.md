@@ -51,15 +51,6 @@ npm run test:e2e
 
 ---
 
-## **Estrutura do Projeto**
-
-- **src**: Contém o código-fonte da aplicação.
-- **pages**: Páginas principais da aplicação com alguns testes unitários.
-- **components**: Componentes reutilizáveis.
-- **cypress**: Configurações e testes do Cypress.
-
----
-
 ## **Configuração do Ambiente**
 
 ### Variáveis de Ambiente

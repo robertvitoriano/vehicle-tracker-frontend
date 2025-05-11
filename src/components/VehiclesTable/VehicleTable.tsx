@@ -16,7 +16,10 @@ const typesMap = {
   "vehicle":"Motor",
   "implement": "Implemento"
 }
-
+const statusMap = {
+  "active":"Ativo",
+  "inactive": "Inativo"
+}
 const columns = ["Placa", "Frota", "Tipo", "Modelo", "Status"];
 
 export const VehicleTable = ({ vehicles }: Props) => {
@@ -35,7 +38,7 @@ export const VehicleTable = ({ vehicles }: Props) => {
               <TableCell>{fleet || "Não informada"}</TableCell>
               <TableCell>{typesMap[type]}</TableCell>
               <TableCell>{model}</TableCell>
-              <TableCell>{status}</TableCell>
+              <TableCell>{statusMap[status]}</TableCell>
             </TableRow>
           ))}
         </TableBody>

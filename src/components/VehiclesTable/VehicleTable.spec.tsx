@@ -9,7 +9,7 @@ const mockVehicles:Vehicle[] = [
     fleet: "Fleet A",
     type: "vehicle",
     model: "Model X",
-    status: "active",
+    status: "inactive",
     createdAt:'',
     nameOwner:''
   },
@@ -39,6 +39,7 @@ describe("VehicleTable Component", () => {
     expect(screen.getByText("Fleet A")).toBeInTheDocument();
     expect(screen.getByText("Motor")).toBeInTheDocument();
     expect(screen.getByText("Model X")).toBeInTheDocument();
+    expect(screen.getByText("Ativo")).toBeInTheDocument();
 
     expect(screen.getByText("Não informada")).toBeInTheDocument();
   });
