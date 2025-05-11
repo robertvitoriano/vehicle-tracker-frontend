@@ -31,7 +31,7 @@ jobs:
         run: |
           npm test    
           
-      - name: Run e2e tests
+      - name: Run E2E tests
         run: |
           npm run test:e2e       
                
