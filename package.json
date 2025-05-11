@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "test": "cross-env NODE_ENV=test jest --config jest.config.ts",
-    "test:e2e": "cypress open",
+    "test": "jest --config jest.config.ts",
+    "cypress": "cypress open",
+    "test:e2e":"npx cypress run",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.tsx\"",
