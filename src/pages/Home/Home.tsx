@@ -7,9 +7,9 @@ import { VehiclesMap } from "../../components/VehiclesMap/VehiclesMap";
 import { VehicleTable } from "../../components/VehiclesTable/VehicleTable";
 import { useVehicleData } from "@/lib/hooks/useVehicleData";
 import { useInfiniteScroll } from "@/lib/hooks/useInfiniteScroll";
-
+type VehicleType = "tracked" | "others"
 export function Home() {
-  const [vehicleType, setVehicleType] = useState<"tracked" | "others">("tracked");
+  const [vehicleType, setVehicleType] = useState<VehicleType>("tracked");
 
   const { trackedVehicles, vehicles, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useVehicleData(vehicleType);
@@ -29,7 +29,7 @@ export function Home() {
             <RadioGroup
               defaultValue="tracked"
               className="flex text-white"
-              onValueChange={(value) => setVehicleType(value as "tracked" | "others")}
+              onValueChange={(value) => setVehicleType(value as VehicleType)}
             >
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="tracked" id="tracked" />
