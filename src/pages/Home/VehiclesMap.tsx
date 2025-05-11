@@ -83,7 +83,7 @@ export const VehiclesMap = ({ trackedVehicles }: Props) => {
       <h1 className="font-poppins text-white font-semibold">
         Mapa rastreador
       </h1>
-      <LoadScript googleMapsApiKey={env.VITE_GOOGLE_API_URL}>
+      <LoadScript googleMapsApiKey={env.VITE_GOOGLE_API_KEY}>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}

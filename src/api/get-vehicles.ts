@@ -46,7 +46,7 @@ type VehiclesFetchResponse = {
 export const getVehiclesQueryKey = "get-vehicles"
 
 export async function getVehicles(params:VehicleFilters): Promise<VehiclesFetchResponse> {
-  const response = await api.get<VehiclesFetchResponse>("recruitment/vehicles/list-with-paginate",{
+  const response = await api.get<VehiclesFetchResponse>("/recruitment/vehicles/list-with-paginate",{
     params
   });
   
